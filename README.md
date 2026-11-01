@@ -92,7 +92,7 @@ The controller sends about 60 small frames a second (spectrum, levels, bar, sect
 
 ## Tests
 
-`test/run.js` drives headless Chrome (Playwright). It checks the audio level, the analyser, opening the output window and sync of scene, text, theme, blackout, freeze and the START/END region. It also renders all eight scenes, tests auto-cycle, the WAV and AIFF slots, dragging the waveform handles, instrument presets, visuals preset save, load, export and import, and visuals MIDI learn with a simulated note. The run fails on any console error. Install `playwright-core` (`npm i playwright-core`) and point `CHROME` at Chrome if it is not at `/usr/bin/google-chrome`. Then run it over http (`python3 -m http.server 8099` and `node test/run.js http`) or with `node test/run.js file`.
+`test/run.js` drives headless Chrome (Playwright). It checks the audio level, the analyser, opening the output window and sync of scene, text, theme, blackout, freeze and the START/END region. It also renders all eight scenes, tests auto-cycle, the WAV and AIFF slots, dragging the waveform handles, instrument presets, visuals preset save, load, export and import, and visuals MIDI learn with a simulated note. The run fails on any console error. Install `playwright-core` (`npm i playwright-core`) and point `CHROME` at Chrome if it is not at `/usr/bin/google-chrome`. Then run it over http (`python3 -m http.server 8099` and `node test/run.js http`) or with `node test/run.js file`, or against the live site with `node test/run.js https://emotional-frameworks-live.netlify.app`.
 
 ## Credits
 

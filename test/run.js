@@ -1,7 +1,7 @@
 // End-to-end checks in headless Chrome: audio, sync to the output window (http via BroadcastChannel + postMessage, and file://),
 // scenes, start/end handles, presets, MIDI learn for visuals, screenshots. Run: node test/run.js [http|file]
 const { chromium } = require(process.env.PLAYWRIGHT_CORE || 'playwright-core'); const fs = require('fs'), path = require('path');
-const ROOT = path.resolve(__dirname, '..'), mode = process.argv[2] || 'http', BASE = mode === 'file' ? 'file://' + ROOT + '/' : 'http://127.0.0.1:8099/';
+const ROOT = path.resolve(__dirname, '..'), mode = process.argv[2] || 'http', BASE = mode === 'file' ? 'file://' + ROOT + '/' : /^https?:/.test(mode) ? mode.replace(/\/?$/, '/') : 'http://127.0.0.1:8099/';
 const SHOTS = [ROOT + '/screenshots', '/workspace/efl-screenshots']; SHOTS.forEach((d) => fs.mkdirSync(d, { recursive: true }));
 const shot = async (pg, name) => { const p = SHOTS[0] + '/' + name; await pg.screenshot({ path: p }); fs.copyFileSync(p, SHOTS[1] + '/' + name); };
 (async () => {
@@ -61,6 +61,6 @@ const shot = async (pg, name) => { const p = SHOTS[0] + '/' + name; await pg.scr
   await page.keyboard.press('Escape'); await page.waitForTimeout(200); R.escBack = await page.evaluate(() => document.body.className);
   // soak
   await page.waitForTimeout(4000); R.fps = await page.evaluate(() => document.querySelector('.vj-status').textContent);
-  R.errors = errs; console.log(JSON.stringify(R, null, 1)); fs.writeFileSync(path.join(__dirname, `results-${mode}.json`), JSON.stringify(R, null, 1));
+  R.errors = errs; console.log(JSON.stringify(R, null, 1)); fs.writeFileSync(path.join(__dirname, `results-${mode.replace(/[^a-z0-9]+/gi, "_")}.json`), JSON.stringify(R, null, 1));
   await browser.close();
 })().catch((e) => { console.error(e); process.exit(1); });
