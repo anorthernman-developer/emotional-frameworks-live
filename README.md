@@ -4,7 +4,7 @@
 
 **Play it:** https://emotional-frameworks-live.netlify.app
 
-This is the stand-alone, performance version of machine 77 in [Manifesto Machines](https://github.com/anorthernman-developer/manifesto-machines) ([original tool](https://anorthernman-developer.github.io/manifesto-machines/tools/77-emotional-frameworks.html)). It is after Fred again..'s "emotional frameworks" idea: the same words, in a different room, become a different feeling. It is styled after Tomato's type-as-image work.
+This is the stand-alone, performance version of machine 77 in [Manifesto Machines](https://github.com/anorthernman-developer/manifesto-machines) ([original tool](https://anorthernman-developer.github.io/manifesto-machines/tools/77-emotional-frameworks.html)). The idea is found-sound production with one vocal line in many emotional frameworks: the same words, in a different room, become a different feeling. The look is layered, type-as-image night graphics.
 
 Everything the original does is still here. On top of that there is a **VJ / digital signage output** that reacts to the audio: you play the instrument on your laptop while the projector shows the visuals.
 
@@ -17,12 +17,12 @@ Everything the original does is still here. On top of that there is a **VJ / dig
 - Your own samples: WAV, AIFF or MP3, one at a time or a whole folder. Use SAMPLES or FOLDER, or drag and drop onto the page.
 - Each slot has pitch, gain, filter, pan, reverb, delay, reverse and mute, plus **START and END trim**. The trim now has a waveform with **draggable START and END handles**. Drag the nearest handle, shift-drag to move the whole region, double-click to reset. The slot plays back with a moving playhead, and the readouts are in seconds.
 - Presets are saved in your browser, and you can export and import them as JSON. Web MIDI with MIDI learn, a WAV recorder, the limiter, keyboard shortcuts and the LEARN panel are all still there.
-- Gemini "describe a day" turns a sentence into a framework. It uses **your own key**, which you paste into the page. The key is only kept in this browser's `localStorage` (`sr12.geminiKey`) and is never committed or sent anywhere except Google.
+- Gemini "describe a day" turns a sentence into a framework. It uses **your own key**, which you paste into the page. Your key stays in your browser: it is only kept in this browser's `localStorage` (`sr12.geminiKey`), sent only to Google (`generativelanguage.googleapis.com`) with your requests, and never committed or sent to us. FORGET KEY deletes it.
 
 **Live visuals (new)**
 - **Eight scenes:** Overprint, Skyline, Swiss Grid, Particle Bloom, Sample Scope, Signage Board, Bauhaus Radial and Kinetic Type. Sample Scope shows your vocal sample with its START/END region, chops and playhead, live.
 - **Auto-cycle** through the scenes by timer, every N bars, on each section change (intro, build, drop, break) or on each new version. Choose which scenes are included and how they change: fade, wipe, flash or cut.
-- **Themes** after Tomato, Josef Müller-Brockmann, Herbert Bayer (Bauhaus), The Designers Republic, Peter Saville / Factory, Neville Brody / The Face, Saul Bass, April Greiman and David Carson / Ray Gun. There is also **Your brand**. "Framework moods" can switch the theme to match the framework you are playing.
+- **Themes** are design styles: Night overprint, Swiss grid, Bauhaus geometry, Acid techno graphics, Minimal black, Condensed red and black, Cut-paper titles, New-wave pastel and Grunge layout. There is also **Your brand**. "Framework moods" can switch the theme to match the framework you are playing.
 - **Text layers:** a headline, artist and track lower third, a scrolling ticker and rotating messages for signage. They support live tokens: `{framework} {word} {bpm} {key} {chord} {section} {version} {bar} {bars} {time} {date} {artist} {brand} {sample}`.
 - **Brand:** name, logo upload (PNG/SVG/JPG), logo corner and size, background, text and accent colours, and font.
 - **Live sliders:** intensity, speed, audio reactivity, trails, drop flash, glitch, grain and text size. Every slider can be MIDI-learned in the DECK.
@@ -96,4 +96,4 @@ The controller sends about 60 small frames a second (spectrum, levels, bar, sect
 
 ## Credits
 
-Machine 77 of [Manifesto Machines](https://github.com/anorthernman-developer/manifesto-machines) by Craig Stanley. The concept is after Fred again.. ("emotional frameworks"), and the visual language is after Tomato and the designers named in the themes. These are homages, not affiliations. MIT licence.
+Machine 77 of [Manifesto Machines](https://github.com/anorthernman-developer/manifesto-machines) by Craig Stanley. Inspired by the "emotional frameworks" idea described by the producer Fred again.. in interviews; the themes are design styles inspired by the movements and studios credited in the LEARN panel. These are not endorsements or affiliations, and no recordings, artwork or lyrics by anyone else are used. MIT licence. See [CREDITS.md](CREDITS.md) and [PRIVACY.md](PRIVACY.md).

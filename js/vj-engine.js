@@ -9,31 +9,31 @@
     ["'Space Grotesk'", 'Space Grotesk (techno)'], ["'Inter'", 'Inter (Swiss neutral)'], ["'Playfair Display'", 'Playfair Display (editorial serif)'],
     ["'IBM Plex Mono'", 'IBM Plex Mono (typewriter)'], ["'Space Mono'", 'Space Mono (retro mono)'], ['Georgia', 'Georgia (system serif)'], ['system-ui', 'System sans'], ['Impact', 'Impact (system poster)']];
 
-  /* palettes + typography, each a homage to a designer in the Manifesto Machines spirit */
+  /* palettes + typography: each is a design style (technique first, no named people) */
   const THEMES = {
-    tomato: { name: 'Tomato', homage: 'Tomato, London, 1990s: night light, streams of type, huge overprinted words', bg: '#07080b', fg: '#f2f0ea', acc: '#ff4b1f', acc2: '#4fd1ff', acc3: '#ffd23f', head: "'Archivo'", headW: 900, mono: "'IBM Plex Mono'", upper: true },
-    swiss: { name: 'Swiss (Müller-Brockmann)', homage: 'Josef Müller-Brockmann: the grid, objective type, one red', bg: '#f4f1ea', fg: '#111111', acc: '#e30613', acc2: '#111111', acc3: '#9a9a9a', head: "'Inter'", headW: 800, mono: "'IBM Plex Mono'", upper: false },
-    bauhaus: { name: 'Bauhaus (Herbert Bayer)', homage: 'Herbert Bayer and the Bauhaus: primary colours, circle, square, triangle', bg: '#efe6d2', fg: '#151515', acc: '#d6281b', acc2: '#1d4fa3', acc3: '#f2b705', head: "'Archivo'", headW: 800, mono: "'Space Mono'", upper: true },
-    tdr: { name: 'The Designers Republic', homage: 'The Designers Republic, Sheffield: acid colour, corporate parody, techno', bg: '#0e0e0e', fg: '#e9ff2a', acc: '#ff2a8a', acc2: '#00e5ff', acc3: '#ffffff', head: "'Space Grotesk'", headW: 700, mono: "'Space Mono'", upper: true },
-    saville: { name: 'Peter Saville (Factory)', homage: 'Peter Saville at Factory Records: black, white, restraint, data as image', bg: '#000000', fg: '#ffffff', acc: '#ffffff', acc2: '#8a8a8a', acc3: '#444444', head: "'Archivo Narrow'", headW: 400, mono: "'IBM Plex Mono'", upper: false },
-    brody: { name: 'Neville Brody (The Face)', homage: 'Neville Brody at The Face: condensed caps, red and black, type as image', bg: '#111111', fg: '#ffffff', acc: '#e4002b', acc2: '#ffffff', acc3: '#e4002b', head: "'Bebas Neue'", headW: 400, mono: "'Space Mono'", upper: true },
-    bass: { name: 'Saul Bass', homage: 'Saul Bass: cut paper, orange and black, title sequences in motion', bg: '#f3e9d2', fg: '#1b1b1b', acc: '#e2541f', acc2: '#1b1b1b', acc3: '#c9a227', head: "'Archivo'", headW: 900, mono: "'Space Mono'", upper: true },
-    greiman: { name: 'April Greiman', homage: 'April Greiman, new wave: pastel gradients, layered space, early digital', bg: '#1a1035', fg: '#ffffff', acc: '#ff7ac6', acc2: '#6ef3ff', acc3: '#ffe66e', head: "'Space Grotesk'", headW: 700, mono: "'Space Mono'", upper: false },
-    carson: { name: 'David Carson (Ray Gun)', homage: 'David Carson at Ray Gun: grunge, broken grids, type that refuses to sit still', bg: '#e9e4d8', fg: '#222222', acc: '#c1272d', acc2: '#555555', acc3: '#222222', head: "'Playfair Display'", headW: 900, mono: "'Space Mono'", upper: false, rough: true },
+    tomato: { name: 'Night overprint', homage: 'Night light, streams of type, huge overprinted words · inspired by 1990s London type-as-image design', bg: '#07080b', fg: '#f2f0ea', acc: '#ff4b1f', acc2: '#4fd1ff', acc3: '#ffd23f', head: "'Archivo'", headW: 900, mono: "'IBM Plex Mono'", upper: true },
+    swiss: { name: 'Swiss grid', homage: 'The grid, objective type, one red · inspired by Swiss International Style', bg: '#f4f1ea', fg: '#111111', acc: '#e30613', acc2: '#111111', acc3: '#9a9a9a', head: "'Inter'", headW: 800, mono: "'IBM Plex Mono'", upper: false },
+    bauhaus: { name: 'Bauhaus geometry', homage: 'Primary colours, circle, square, triangle · inspired by the Bauhaus', bg: '#efe6d2', fg: '#151515', acc: '#d6281b', acc2: '#1d4fa3', acc3: '#f2b705', head: "'Archivo'", headW: 800, mono: "'Space Mono'", upper: true },
+    tdr: { name: 'Acid techno graphics', homage: 'Acid colour, corporate parody, techno · inspired by 1990s Sheffield record design', bg: '#0e0e0e', fg: '#e9ff2a', acc: '#ff2a8a', acc2: '#00e5ff', acc3: '#ffffff', head: "'Space Grotesk'", headW: 700, mono: "'Space Mono'", upper: true },
+    saville: { name: 'Minimal black', homage: 'Black, white, restraint, data as image · inspired by post-punk record sleeves', bg: '#000000', fg: '#ffffff', acc: '#ffffff', acc2: '#8a8a8a', acc3: '#444444', head: "'Archivo Narrow'", headW: 400, mono: "'IBM Plex Mono'", upper: false },
+    brody: { name: 'Condensed red and black', homage: 'Condensed caps, red and black, type as image · inspired by 1980s magazine design', bg: '#111111', fg: '#ffffff', acc: '#e4002b', acc2: '#ffffff', acc3: '#e4002b', head: "'Bebas Neue'", headW: 400, mono: "'Space Mono'", upper: true },
+    bass: { name: 'Cut-paper titles', homage: 'Cut paper, orange and black, title sequences in motion · inspired by mid-century film titles', bg: '#f3e9d2', fg: '#1b1b1b', acc: '#e2541f', acc2: '#1b1b1b', acc3: '#c9a227', head: "'Archivo'", headW: 900, mono: "'Space Mono'", upper: true },
+    greiman: { name: 'New-wave pastel', homage: 'Pastel gradients, layered space, early digital · inspired by 1980s new-wave design', bg: '#1a1035', fg: '#ffffff', acc: '#ff7ac6', acc2: '#6ef3ff', acc3: '#ffe66e', head: "'Space Grotesk'", headW: 700, mono: "'Space Mono'", upper: false },
+    carson: { name: 'Grunge layout', homage: 'Broken grids, type that refuses to sit still · inspired by 1990s grunge magazine design', bg: '#e9e4d8', fg: '#222222', acc: '#c1272d', acc2: '#555555', acc3: '#222222', head: "'Playfair Display'", headW: 900, mono: "'Space Mono'", upper: false, rough: true },
     brand: { name: 'Your brand', homage: 'Your own colours, font and logo (set them under BRAND)', bg: '#000000', fg: '#ffffff', acc: '#ff4b1f', acc2: '#ffffff', acc3: '#888888', head: "'Archivo'", headW: 900, mono: "'IBM Plex Mono'", upper: true }
   };
   /* framework moods: if switched on, each emotional framework picks its own look */
   const MOODS = { lifted: 'tomato', twostep: 'greiman', numb: 'saville', panic: 'brody', gospel: 'bass', rave: 'tdr', still: 'swiss' };
 
   const SCENES = [
-    { id: 'overprint', name: 'Overprint', homage: 'Tomato', own: { head: true } },
+    { id: 'overprint', name: 'Overprint', homage: 'layered night type', own: { head: true } },
     { id: 'skyline', name: 'Skyline', homage: 'spectrum city' },
-    { id: 'grid', name: 'Swiss Grid', homage: 'Gerstner, Müller-Brockmann' },
+    { id: 'grid', name: 'Swiss Grid', homage: 'the objective grid' },
     { id: 'particles', name: 'Particle Bloom', homage: 'night light' },
     { id: 'scope', name: 'Sample Scope', homage: 'your vocal, start to end' },
     { id: 'signage', name: 'Signage', homage: 'station boards', own: { head: true, msgs: true } },
-    { id: 'radial', name: 'Radial', homage: 'Bauhaus' },
-    { id: 'kinetic', name: 'Kinetic Type', homage: 'Saul Bass titles', own: { head: true, msgs: true } }];
+    { id: 'radial', name: 'Radial', homage: 'Bauhaus geometry' },
+    { id: 'kinetic', name: 'Kinetic Type', homage: 'cut-paper film titles', own: { head: true, msgs: true } }];
 
   function defaults() {
     return {
