@@ -167,7 +167,7 @@ const MM = (() => {
     const box = h('div', { class: 'mm-ai' }, h('div', { class: 'mm-ai-t' }, 'GEMINI · ' + (o.title || 'ASK')), o.help ? h('div', { class: 'mm-ai-help' }, o.help) : null,
       h('textarea', { class: 'mm-ai-p', placeholder: o.placeholder || '' }), h('div', { class: 'mm-ai-row' }, h('button', { class: 'mm-ai-ask' }, o.button || 'ASK GEMINI'), h('span', { class: 'mm-ai-st' }, 'No key? The built-in version still works.')),
       h('div', { class: 'mm-ai-out' }),
-      h('details', {}, h('summary', {}, 'key & model'), h('div', { class: 'mm-ai-help' }, 'Free key from aistudio.google.com/apikey. Stored only in this browser (shared with SR-12 and the other tools) and sent only to Google.'), h('input', { class: 'mm-ai-key', type: 'password', placeholder: 'Google AI Studio key', autocomplete: 'off' }), h('div', { class: 'mm-ai-row' }, h('select', { class: 'mm-ai-model' }), h('button', { class: 'mm-ai-forget' }, 'FORGET KEY'))));
+      h('details', {}, h('summary', {}, 'key & model'), h('div', { class: 'mm-ai-help' }, 'Your key stays in your browser. Get a free key from aistudio.google.com/apikey and paste it here: it is saved only in this browser (localStorage, shared with the other tools on this site), sent only to Google with your Gemini requests, and never to us. Press FORGET KEY to delete it. Without a key the built-in version is used.'), h('input', { class: 'mm-ai-key', type: 'password', placeholder: 'Google AI Studio key', autocomplete: 'off' }), h('div', { class: 'mm-ai-row' }, h('select', { class: 'mm-ai-model' }), h('button', { class: 'mm-ai-forget' }, 'FORGET KEY'))));
     el.append(box); const q = (s) => box.querySelector(s), ms = q('.mm-ai-model'); MODELS.forEach((m) => ms.append(new Option(m, m))); ms.value = localStorage.getItem('gp.geminiModel') || MODELS[0];
     q('.mm-ai-key').value = localStorage.getItem('sr12.geminiKey') || ''; q('.mm-ai-forget').onclick = () => { localStorage.removeItem('sr12.geminiKey'); q('.mm-ai-key').value = ''; toast('Key removed'); };
     q('.mm-ai-ask').onclick = async () => { const st = q('.mm-ai-st'), p = q('.mm-ai-p').value.trim() || o.placeholder || ''; const k = q('.mm-ai-key').value.trim(); if (k) localStorage.setItem('sr12.geminiKey', k); localStorage.setItem('gp.geminiModel', ms.value);
@@ -179,24 +179,26 @@ const MM = (() => {
   }
 
   /* ---------- learn panel ---------- */
+  const MM_NOTE = 'Only public-domain texts are quoted, marked as such and in our own translation; everything else is our own paraphrase. Names are short credits for the sources and styles that inspired this tool; it is not made by, or endorsed by, any of them. Privacy: no trackers, analytics or cookies. Your settings and any Gemini key stay in this browser (localStorage); the key is sent only to Google when you ask Gemini. Fonts load from Google Fonts.';
   function learnHTML(m) {
     const M = m.manifesto, D = m.design, esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
     return `<button class="mm-x" aria-label="close">×</button>
 <div class="mm-l-col"><div class="mm-l-k">THE MANIFESTO</div><h2>${esc(M.name)}</h2><div class="mm-l-by">${esc(M.author)} · ${esc(M.year)}${M.where ? ' · ' + esc(M.where) : ''}</div>
 <ul>${M.ideas.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
-${(M.quotes || []).map((q) => `<blockquote>“${esc(q)}”</blockquote>`).join('')}
+${(M.quotes || []).map((q) => (Array.isArray(q) ? `<blockquote>“${esc(q[0])}”<cite>${esc(q[1])}</cite></blockquote>` : `<blockquote>“${esc(q)}”</blockquote>`)).join('')}
 <div class="mm-l-k">HOW THIS MACHINE READS IT</div><p>${esc(M.system)}</p></div>
-<div class="mm-l-col"><div class="mm-l-k">THE DESIGN HOMAGE</div><h2>${esc(D.name)}</h2><div class="mm-l-by">${esc(D.who)} · ${esc(D.era)}</div>
+<div class="mm-l-col"><div class="mm-l-k">DESIGN STYLE</div><h2>${esc(D.short)}</h2><div class="mm-l-by">Inspired by ${esc(D.name)} · ${esc(D.era)}</div>
 <div class="mm-l-k">HALLMARKS</div><ul>${D.hallmarks.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
 <div class="mm-l-k">LOOK UP</div><ul>${D.works.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
 <div class="mm-l-k">HOW TO PLAY</div><p>${esc(m.how)}</p>
-<p class="mm-l-note">Quotes are short and from the published text in common English translation; everything else is paraphrase. Tool ${esc(m.no)} of Manifesto Machines.</p></div>`;
+<p class="mm-l-note">${MM_NOTE} Tool ${esc(m.no)} of Manifesto Machines.</p></div>`;
   }
   let toastT; function toast(msg) { const t = $('#mm-toast'); if (!t) return; t.textContent = msg; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 2400); }
 
   /* ---------- init ---------- */
   function init(c) {
     cfg = c; meta = window.MM_META || {}; S.bpm = c.bpm || meta.bpm || 100; S.div = c.div || 4;
+    setTimeout(() => document.querySelectorAll('canvas:not([aria-label])').forEach((cv) => { cv.setAttribute('role', 'img'); cv.setAttribute('aria-label', (document.title.split(' · ')[0] || 'Instrument') + ': visuals that follow the sound'); }), 0); /* accessibility */
     const bar = h('div', { id: 'mm-bar' },
       h('a', { class: 'mm-back', href: 'https://anorthernman-developer.github.io/manifesto-machines/', target: '_blank', rel: 'noopener', title: 'All Manifesto Machines' }, '◂ ALL'),
       h('span', { class: 'mm-no' }, meta.no), h('span', { class: 'mm-name' }, meta.title),
@@ -225,7 +227,7 @@ ${(M.quotes || []).map((q) => `<blockquote>“${esc(q)}”</blockquote>`).join('
   /* drag helper: calls fn(x, y, phase, e) in element-relative px for pointer down/move/up */
   function drag(el, fn) { el.addEventListener('pointerdown', (e) => { ensure(); if (ctx.state !== 'running') ctx.resume(); const r = el.getBoundingClientRect(); el.setPointerCapture && el.setPointerCapture(e.pointerId); fn(e.clientX - r.left, e.clientY - r.top, 'down', e); const mv = (ev) => { const r2 = el.getBoundingClientRect(); fn(ev.clientX - r2.left, ev.clientY - r2.top, 'move', ev); }, up = (ev) => { const r2 = el.getBoundingClientRect(); fn(ev.clientX - r2.left, ev.clientY - r2.top, 'up', ev); el.removeEventListener('pointermove', mv); el.removeEventListener('pointerup', up); el.removeEventListener('pointercancel', up); }; el.addEventListener('pointermove', mv); el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up); }); }
 
-  return { init, toggle, rec, ensure, toast, aiBox, gemini, tone, noise, play, smp, smpName, setDelay, crusher, drive, onsets, peaks, cloneBuf, canvas, drag, rng, pick, clamp, mtof, deg, SCALES, S, h, $, $$, loadFiles, aiff,
+  return { NOTE: MM_NOTE, init, toggle, rec, ensure, toast, aiBox, gemini, tone, noise, play, smp, smpName, setDelay, crusher, drive, onsets, peaks, cloneBuf, canvas, drag, rng, pick, clamp, mtof, deg, SCALES, S, h, $, $$, loadFiles, aiff,
     get ctx() { return ensure(); }, get out() { ensure(); return out; }, get post() { ensure(); return clip; }, get rev() { ensure(); return revIn; }, get dly() { ensure(); return dlyIn; }, get now() { return ctx ? ctx.currentTime : 0; },
     get bpm() { return S.bpm; }, set bpm(v) { S.bpm = clamp(v, 10, 400); }, get playing() { return S.playing; }, get user() { return S.samples.length > 0; }, get fb() { ensure(); return FB; } };
 })();

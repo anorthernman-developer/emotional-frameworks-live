@@ -36,7 +36,7 @@
 #mm-bar #mmx-deck-btn.on{background:var(--acc);border-color:var(--acc);color:#fff}
 #mm-learn-dlg blockquote cite{display:block;font:italic 12px var(--bar-font);opacity:.7;margin-top:3px}#mm-learn-dlg ol{padding-left:20px}#mm-learn-dlg ol li{margin:4px 0}
 
-/* ---- tool styles: homage to Tomato ---- */
+/* ---- tool styles: layered night type ---- */
 :root{--bg:#07080b;--fg:#f2f0ea;--acc:#ff4b1f;--bar-bg:#f2f0ea;--bar-fg:#07080b;--bar-font:'Archivo Narrow',system-ui,sans-serif;--learn-font:'Archivo Narrow',sans-serif;--learn-bg:#0d0e12;--deck-bg:#0d0e12;--head-font:'Archivo',sans-serif}
 #mm-stage{display:grid;grid-template-columns:minmax(0,1fr) 300px}
 #view{position:relative;overflow:hidden}#cv{position:absolute;inset:0;width:100%;height:100%}
@@ -48,3 +48,5 @@
 #side .mmx-ctl{grid-template-columns:96px 1fr 40px;font:400 12px 'Archivo Narrow'}#side .mmx-ctl select{grid-column:2/4;min-width:0;font:400 12px 'Archivo Narrow';background:#0d0e12;color:#f2f0ea}
 #side .bt{display:flex;gap:4px;flex-wrap:wrap}#side .bt button{font:700 11px 'IBM Plex Mono';text-transform:uppercase;border:1px solid #f2f0ea;background:transparent;color:#f2f0ea;padding:5px 7px;cursor:pointer}#side .bt button:hover,#side .bt button.on{background:#ff4b1f;border-color:#ff4b1f;color:#07080b}
 #mm-learn-dlg{box-shadow:12px 12px 0 #ff4b1f}#mm-learn-dlg h2{font:900 34px/0.95 'Archivo';letter-spacing:-.02em;text-transform:uppercase}
+/* accessibility: visible keyboard focus */
+:focus-visible{outline:2px solid currentColor;outline-offset:2px}

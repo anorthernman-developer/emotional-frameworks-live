@@ -199,12 +199,12 @@ ${(M.quotes || []).map(q).join('')}
 <div class="mm-l-k">HOW THIS INSTRUMENT READS IT</div><p>${esc(M.system)}</p>
 ${m.live ? `<div class="mm-l-k">LIVE VISUALS (PERFORMANCE MODE)</div>${m.live.map((x) => `<p>${esc(x)}</p>`).join('')}` : ''}
 ${m.try ? `<div class="mm-l-k">TRY THIS WITH YOUR OWN SOUNDS</div><ol>${m.try.map((i) => `<li>${esc(i)}</li>`).join('')}</ol>` : ''}</div>
-<div class="mm-l-col"><div class="mm-l-k">THE DESIGN HOMAGE</div><h2>${esc(D.name)}</h2><div class="mm-l-by">${esc(D.who)} · ${esc(D.era)}</div>
+<div class="mm-l-col"><div class="mm-l-k">DESIGN STYLE</div><h2>${esc(D.short)}</h2><div class="mm-l-by">Inspired by ${esc(D.name)} · ${esc(D.era)}</div>
 <div class="mm-l-k">HALLMARKS, AND WHERE THEY SHOW UP HERE</div><ul>${D.hallmarks.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
 <div class="mm-l-k">WORKS TO LOOK UP</div><ul>${D.works.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
 <div class="mm-l-k">HOW TO PLAY</div><p>${esc(m.how)}</p>
 <div class="mm-l-k">THE DECK (PRESS D)</div><p>Sample slots with pitch, gain, start and end (drag the handles on each waveform; shift-drag moves the whole region), reverse, filter, pan, reverb and delay sends; presets (save, load, export and import JSON); MIDI in with MIDI learn for any slider; and every keyboard shortcut (press ?).</p>
-<p class="mm-l-note">Quotes are short and taken from the published sources named under each one; everything else is paraphrase. Tool ${esc(m.no)} of Manifesto Machines.</p></div>`;
+<p class="mm-l-note">${(window.MM && MM.NOTE) || ''} Tool ${esc(m.no)} of Manifesto Machines.</p></div>`;
     dlg.querySelector('.mm-x').onclick = () => dlg.classList.add('mm-hide');
   }
 
